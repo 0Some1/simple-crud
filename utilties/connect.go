@@ -23,6 +23,7 @@ func Connect() {
 		panic("could not connect to database")
 	}
 	DB = database
+	migration(DB)
 }
 
 func migration(db *gorm.DB) {

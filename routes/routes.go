@@ -1,9 +1,13 @@
 package routes
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/gofiber/fiber/v2"
+	"simpleCrud/controller"
+)
 
 func Setup(api fiber.Router) {
-	api.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	api.Get("/comment", controller.GetComments)
+	api.Post("/comment", controller.CreateComment)
+	api.Put("/comment/:id", controller.UpdateComment)
+	api.Delete("/comment/:id", controller.DeleteComment)
 }

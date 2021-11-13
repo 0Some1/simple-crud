@@ -4,6 +4,6 @@ import "gorm.io/gorm"
 
 type Comment struct {
 	gorm.Model
-	name string
-	text string
+	Name string `json:"name"`
+	Text string `json:"text"`
 }

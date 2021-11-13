@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	utilties.Connect()
 
 	app := fiber.New(fiber.Config{
 		ErrorHandler: utilties.CustomErrorHandler,
@@ -23,6 +24,10 @@ func main() {
 	app.Use(logger.New())
 
 	routes.Setup(app)
+
+	app.All("*", func(c *fiber.Ctx) error {
+		return fiber.ErrNotFound
+	})
 
 	port := os.Getenv("PORT")
 	if port == "" {
